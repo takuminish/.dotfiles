@@ -31,8 +31,7 @@ alias ..='cd ..'
 function chpwd() { ls }
 
 # 左側にカレントディレクトリを表示する
-PROMPT="%{$fg_bold[cyan]%}%d$reset_color%}
-
 #通常の時(*> ᴗ •*)ゞ < ヨーソロー !　コマンドミスった時|c||^.- ^|| <　ぶっぶーですわを表示
+PROMPT="%{$fg_bold[cyan]%}%d$reset_color%}
 %(?.%B%F{green}.%B%F{blue})[%n]%(?!(*> ᴗ •*)ゞ < ヨーソロー !|c||^.- ^|| <　ぶっぶーですわ )%f%b"
 RPROMPT=""
