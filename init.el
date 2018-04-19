@@ -20,3 +20,8 @@
 (setq make-backup-files nil)
 ;; .#* とかのバックアップファイルを作らない
 (setq auto-save-default nil)
+
+;; キーバインドの変更
+(define-key global-map(kbd "C-n")'forward-char)
+(define-key global-map(kbd "C-b")'backward-char)
+(define-key global-map(kbd "C-f")'next-line)

@@ -25,7 +25,7 @@ setopt auto_cd
 alias la='ls -a'
 alias ll='ls -l'
 alias ..='cd ..'
-
+alias emacs='emacs -nw'
 
 # cdしたあと自動でlsする
 function chpwd() { ls }
@@ -50,3 +50,5 @@ alls() {
 }
 zle -N alls
 bindkey "\C-m" alls
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
