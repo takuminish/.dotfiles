@@ -37,34 +37,24 @@ FACE=("从/*^ヮ^§从 < きせきだよ〜"  "ﾒｲ*,> _ <,ﾘ < はずかし�
 
 FACE_COLOR=("03" "207" "156" "124" "19" "07" "214" "93" "05")
 # カレントディレクトリと顔文字を表示
-PROMPT="%{$fg_bold[cyan]%}%d$reset_color%}
-%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| <　ぶっぶーですわ )%f%b"
 
 RPROMPT=""
+PROMPT="%{$fg_bold[white]$bg[cyan]%d$reset_color%}
+$bg[white]%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b"
 
 # エンターキー押すたびに顔文字を変化
 alls() {
   zle accept-line
   if [[ -z "$BUFFER" ]]; then
       echo ''
-      PROMPT="%{$fg_bold[cyan]%}%d$reset_color%}
-%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| <　ぶっぶーですわ )%f%b"
+      PROMPT="%{$fg_bold[white]$bg[cyan]%d$reset_color%}
+$bg[white]%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b"
   fi
 }
 zle -N alls
 bindkey "\C-m" alls
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
-autoload -Uz vcs_info
-setopt prompt_subst
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
-RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 compinit
 
@@ -77,3 +67,13 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 
 # 補完後、メニュー選択モードになり左右キーで移動が出来る
 zstyle ':completion:*:default' menu select=2
+
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+
+
+RPROMPT='${vcs_info_msg_0_}'
