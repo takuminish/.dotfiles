@@ -4,17 +4,17 @@ FACE=("从/*^ヮ^§从 < きせきだよ〜"  "ﾒｲ*,> _ <,ﾘ < はずかし�
 FACE_COLOR=("03" "207" "156" "124" "19" "07" "214" "93" "05")
 
 # カレントディレクトリと顔文字を表示
+PROMPT="%{$fg_bold[cyan]%d$reset_color%}
+%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b"
 
-PROMPT="%{$fg_bold[white]$bg[cyan]%d$reset_color%}
-$bg[white]%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b"
 
 # エンターキー押すたびに顔文字を変化
 alls() {
   zle accept-line
   if [[ -z "$BUFFER" ]]; then
       echo ''
-      PROMPT="%{$fg_bold[white]$bg[cyan]%d$reset_color%}
-$bg[white]%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b"
+      PROMPT="%{$fg_bold[cyan]%d$reset_color%}
+%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b"
   fi
 }
 
