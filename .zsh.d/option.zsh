@@ -20,8 +20,6 @@ function chpwd() { ls }
 
 zle -N alls
 bindkey "\C-m" alls
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 compinit
 
