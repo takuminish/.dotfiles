@@ -5,7 +5,7 @@ FACE_COLOR=("03" "207" "156" "124" "19" "07" "214" "93" "05")
 # カレントディレクトリと顔文字を表示
 
 PROMPT='$(left-prompt)
-%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b'
+%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b'
 
 function left-prompt() {
   echo "%K{green}%F{black}[%n] %f%k%F{green}%K{cyan}\ue0b0%f %F{black}%d %f%k%F{cyan}%K{black}\ue0b0%f $(git-prompt)%k%F{black}\ue0b0%f"
@@ -17,7 +17,7 @@ alls() {
   if [[ -z "$BUFFER" ]]; then
       echo ''
       PROMPT='$(left-prompt)
-%(?.%B%F{green}.%B%F{blue})[%n] %(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b'
+%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b'
   fi
 }
 
