@@ -11,5 +11,9 @@ precmd () { vcs_info }
 RPROMPT='$(right-prompt)'
 
 function right-prompt {
-  echo ${vcs_info_msg_0_}
+    if [[ -z ${vcs_info_msg_0_} ]]; then
+	echo '%F{white}\ue0a0 [no-branch]%f'
+    else
+        echo ${vcs_info_msg_0_}
+    fi
 }
