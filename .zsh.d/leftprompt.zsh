@@ -8,7 +8,7 @@ PROMPT='$(left-prompt)
 %(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] ! |c||^.- ^|| < ぶっぶーですわ )%f%b'
 
 function left-prompt() {
-  echo '%K{green}%F{white}[%n] %f%k%F{green}%K{cyan}\ue0b0%f %d %k%F{cyan}\ue0b0%f'
+  echo "%K{green}%F{black}[%n] %f%k%F{green}%K{cyan}\ue0b0%f %F{black}%d %f%k%F{cyan}%K{black}\ue0b0%f $(git-prompt)%k%F{black}\ue0b0%f"
 }
  
 # エンターキー押すたびに顔文字を変化
@@ -21,5 +21,23 @@ alls() {
   fi
 }
 
+# 右プロンプト
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
+zstyle ':vcs_info:*' formats "%c%u\ue0a0[%b]%f%k"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
 
+#RPROMPT='$(git-prompt)'
+
+function git-prompt {
+    if [[ -z ${vcs_info_msg_0_} ]]; then
+	echo '%F{white}\ue0a0 [no-branch]%f'
+    else
+        echo ${vcs_info_msg_0_}
+    fi
+}
 
