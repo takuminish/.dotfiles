@@ -4,13 +4,17 @@ FACE=("从/*^ヮ^§从 < きせきだよ〜"  "ﾒｲ*,> _ <,ﾘ < はずかし�
 FACE_COLOR=("03" "207" "156" "124" "19" "07" "214" "93" "05")
 # カレントディレクトリと顔文字を表示
 
-PROMPT='$(left-prompt)
+PROMPT='$(left-prompt-top)
+$(left-prompt-middle)
 %(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b'
 
-function left-prompt() {
+function left-prompt-top() {
   echo "%K{green}%F{black}[%n] %f%k%F{green}%K{cyan}\ue0b0%f %F{black}%d %f%k%F{cyan}%K{black}\ue0b0%f $(git-prompt)%k%F{black}\ue0b0%f"
 }
- 
+
+function left-prompt-middle() {
+  echo "%K{white}%F{black}$(echo $SHELL | cut -f 5 -d /)%f%k%F{white}\ue0b0%f"
+}
 # エンターキー押すたびに顔文字を変化
 alls() {
   zle accept-line
