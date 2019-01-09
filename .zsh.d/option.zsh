@@ -1,6 +1,3 @@
-# 色を使用できるようにする
-autoload -Uz colors
-colors
 
 # ヒストリ(履歴)の設定
 HISTFILE=~/.zsh_history
