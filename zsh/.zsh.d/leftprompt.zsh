@@ -13,7 +13,7 @@ function left-prompt-top() {
 }
 
 function left-prompt-middle() {
-  echo "%K{white}%F{black}$(echo $SHELL | cut -f 5 -d /) %f%k%F{white}%K{red}\ue0b0%f%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ') %f%k%F{red}%K{blue}\ue0b0%f  gcc $(gcc -dumpversion) %k%F{blue}\ue0b0%f"
+  echo "%K{white}%F{black}$(echo $SHELL | cut -f 5 -d /) %f%k%F{white}%K{red}\ue0b0%f%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ') %f%k%F{red}%K{blue}\ue0b0%f  %F{white}gcc $(gcc -dumpversion)%f %k%F{blue}\ue0b0%f"
 }
 # エンターキー押すたびに顔文字を変化
 alls() {
