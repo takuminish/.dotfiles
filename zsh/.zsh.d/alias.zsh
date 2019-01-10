@@ -1,9 +1,9 @@
 # エイリアス
 
-alias la='ls -a'
-alias ll='ls -l'
+alias la='exa -a'
+alias ll='exa -l'
 alias ..='cd ..'
 alias emacs='emacs -nw'
-alias ls="ls -GF"
+alias ls="exa -GF"
 alias gls="gls --color"
 
