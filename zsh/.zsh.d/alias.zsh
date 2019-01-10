@@ -1,7 +1,7 @@
 # エイリアス
 
-alias la='exa -a'
-alias ll='exa -l'
+alias la='exa -aF'
+alias ll='exa -lF'
 alias ..='cd ..'
 alias emacs='emacs -nw'
 alias ls="exa -GF"
