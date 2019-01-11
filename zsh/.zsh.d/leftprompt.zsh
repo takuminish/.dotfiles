@@ -25,15 +25,22 @@ PROMPT='$(left-prompt-top)
 $(left-prompt-middle)
 $(left-prompt-bottom)'
 
+ipcolor="magenta"
+usernamecolor="green"
+currentpathcolor="cyan"
+gitbranchcolor="black"
+shellcolor="white"
+rubycolor="red"
+gcccolor="blue"
 
 function left-prompt-top() {
-  echo "$(ip-view)%K{green}%F{magenta}\ue0b0%f$(username-view)%k%F{green}%K{cyan}\ue0b0%f $(current-path-view)%F{cyan}%K{black}\ue0b0%f$(git-branch-view)%k%F{black}\ue0b0%f"
+  echo "$(ip-view)%K{${usernamecolor}}%F{${ipcolor}}\ue0b0%f$(username-view)%k%F{${usernamecolor}}%K{${currentpathcolor}}\ue0b0%f $(current-path-view)%F{${currentpathcolor}}%K{${gitbranchcolor}}\ue0b0%f$(git-branch-view)%k%F{${gitbranchcolor}}\ue0b0%f"
 }
 
 
 
 function left-prompt-middle() {
-  echo "$(shell-view)%F{white}%K{red}\ue0b0%f$(ruby-version-view)%k%F{red}%K{blue}\ue0b0%f$(gcc-version-view)%k%F{blue}\ue0b0%f"
+  echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}\ue0b0%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}\ue0b0%f$(gcc-version-view)%k%F{${gcccolor}}\ue0b0%f"
 }
 
 function left-prompt-bottom() {
@@ -41,15 +48,15 @@ function left-prompt-bottom() {
 }
 
 function ip-view() {
-    echo "%K{magenta}%F{white}$(ifconfig | grep -w "inet" | grep -v "127.0.0.1" | cut -f 2 -d ' ')%f%k"
+    echo "%K{${ipcolor}}%F{white}$(ifconfig | grep -w "inet" | grep -v "127.0.0.1" | cut -f 2 -d ' ')%f%k"
 }
 
 function username-view() {
-  echo "%K{green}%F{black}  [%n] %f%k"
+  echo "%K{${usernamecolor}}%F{black}  [%n] %f%k"
 }
 
 function current-path-view() {
-  echo "%K{cyan}%F{black}%d%f%k"
+  echo "%K{${currentpathcolor}}%F{black}%d%f%k"
 }
 
 function git-branch-view {
@@ -61,15 +68,15 @@ function git-branch-view {
 }
 
 function shell-view() {
-  echo "%K{white}%F{black}$(echo $SHELL | cut -f 5 -d /)%f%k"
+  echo "%K{${shellcolor}}%F{black}$(echo $SHELL | cut -f 5 -d /)%f%k"
 }
 
 function ruby-version-view() {
-  echo "%K{red}%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ')%f%k"
+  echo "%K{${rubycolor}}%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ')%f%k"
 }
 
 function gcc-version-view() {
-  echo "%K{blue}%F{white}  gcc $(gcc -dumpversion)%f%k"
+  echo "%K{${gcccolor}}%F{white}  gcc $(gcc -dumpversion)%f%k"
 }
 
 # エンターキー押すたびに顔文字を変化
