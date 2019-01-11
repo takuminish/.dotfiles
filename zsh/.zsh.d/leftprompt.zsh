@@ -19,7 +19,7 @@ $(left-prompt-bottom)'
 
 
 function left-prompt-top() {
-  echo "$(ip-view)%K{green}%F{magenta}\ue0b0%f %F{black}[%n] %f%k%F{green}%K{cyan}\ue0b0%f %F{black}%d %f%k%F{cyan}%K{black}\ue0b0%f $(git-prompt)%k%F{black}\ue0b0%f"
+  echo "$(ip-view)%K{green}%F{magenta}\ue0b0%f$(username-view)%k%F{green}%K{cyan}\ue0b0%f %F{black}%d %f%k%F{cyan}%K{black}\ue0b0%f $(git-prompt)%k%F{black}\ue0b0%f"
 }
 
 
@@ -34,6 +34,10 @@ function left-prompt-bottom() {
 
 function ip-view() {
     echo "%K{magenta}%F{white}$(ifconfig | grep -w "inet" | grep -v "127.0.0.1" | cut -f 2 -d ' ')%f%k"
+}
+
+function username-view() {
+  echo "%K{green}%F{black}  [%n] %f%k"
 }
 
 function shell-view() {
