@@ -17,12 +17,17 @@ function ip-view() {
 }
 
 function left-prompt-middle() {
-  echo "%K{white}$(shell-view)%k%F{white}%K{red}\ue0b0%f%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ') %f%k%F{red}%K{blue}\ue0b0%f  %F{white}gcc $(gcc -dumpversion)%f %k%F{blue}\ue0b0%f"
+  echo "%K{white}$(shell-view)%k%F{white}%K{red}\ue0b0%f$(ruby-version-view)%k%F{red}%K{blue}\ue0b0%f  %F{white}gcc $(gcc -dumpversion)%f %k%F{blue}\ue0b0%f"
 }
 
 function shell-view() {
   echo "%F{black}$(echo $SHELL | cut -f 5 -d /)%f"
 }
+
+function ruby-version-view() {
+  echo "%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ')%f"
+}
+
 # エンターキー押すたびに顔文字を変化
 alls() {
   zle accept-line
