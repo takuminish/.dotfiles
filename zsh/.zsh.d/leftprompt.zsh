@@ -21,9 +21,11 @@ FACE=("从/*^ヮ^§从 < きせきだよ〜"
 FACE_COLOR=("03" "207" "156" "124" "19" "07" "214" "93" "05")
 # カレントディレクトリと顔文字を表示
 
+RANDOM="$(echo $(( $(od -vAn -N4 -tu4 < /dev/random))))"
+
 PROMPT='$(left-prompt-top)
 $(left-prompt-middle)
-$(left-prompt-bottom)'
+$(left-prompt-bottom ${RANDOM})'
 
 ipcolor="magenta"
 usernamecolor="green"
@@ -37,14 +39,12 @@ function left-prompt-top() {
   echo "$(ip-view)%K{${usernamecolor}}%F{${ipcolor}}\ue0b0%f$(username-view)%k%F{${usernamecolor}}%K{${currentpathcolor}}\ue0b0%f $(current-path-view)%F{${currentpathcolor}}%K{${gitbranchcolor}}\ue0b0%f$(git-branch-view)%k%F{${gitbranchcolor}}\ue0b0%f"
 }
 
-
-
 function left-prompt-middle() {
   echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}\ue0b0%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}\ue0b0%f$(gcc-version-view)%k%F{${gcccolor}}\ue0b0%f"
 }
 
 function left-prompt-bottom() {
-  echo "%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b"
+  echo "%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$1 % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b"
 }
 
 function ip-view() {
@@ -83,13 +83,16 @@ function gcc-version-view() {
 alls() {
   zle accept-line
   if [[ -z "$BUFFER" ]]; then
-      echo ''
+      echo ""
+      RANDOM="$(echo $(( $(od -vAn -N4 -tu4 < /dev/random) )))"
       PROMPT='$(left-prompt-top)
 $(left-prompt-middle)
-%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b'
+$(left-prompt-bottom ${RANDOM})'
+ #     PROMPT='$(left-prompt-top)
+#$(left-prompt-middle)
+#%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b'
   fi
 }
-
 
 precmd () { vcs_info }
 
