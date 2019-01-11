@@ -21,6 +21,8 @@
 (setq make-backup-files nil)
 ;; .#* とかのバックアップファイルを作らない
 (setq auto-save-default nil)
+;; 終了時にオートセーブファイルを削除する
+(setq delete-auto-save-files t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
