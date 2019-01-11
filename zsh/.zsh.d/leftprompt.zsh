@@ -35,12 +35,16 @@ shellcolor="white"
 rubycolor="red"
 gcccolor="blue"
 
+arrow="\ue0b0"
+
+
+
 left-prompt-top() {
-  echo "$(ip-view)%K{${usernamecolor}}%F{${ipcolor}}\ue0b0%f$(username-view)%k%F{${usernamecolor}}%K{${currentpathcolor}}\ue0b0%f $(current-path-view)%F{${currentpathcolor}}%K{${gitbranchcolor}}\ue0b0%f$(git-branch-view)%k%F{${gitbranchcolor}}\ue0b0%f"
+  echo "$(ip-view)%K{${usernamecolor}}%F{${ipcolor}}${arrow}%f$(username-view)%k%F{${usernamecolor}}%K{${currentpathcolor}}${arrow}%f $(current-path-view)%F{${currentpathcolor}}%K{${gitbranchcolor}}${arrow}%f$(git-branch-view)%k%F{${gitbranchcolor}}${arrow}%f"
 }
 
 left-prompt-middle() {
-  echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}\ue0b0%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}\ue0b0%f$(gcc-version-view)%k%F{${gcccolor}}\ue0b0%f"
+  echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}${arrow}%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}${arrow}%f$(gcc-version-view)%k%F{${gcccolor}}${arrow}%f"
 }
 
 left-prompt-bottom() {
