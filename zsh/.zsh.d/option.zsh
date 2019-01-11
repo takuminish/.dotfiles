@@ -26,3 +26,6 @@ export LSCOLORS=ExFxCxDxBxEgedabagacad
 # 補完後、メニュー選択モードになり左右キーで移動が出来る
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' list-colors ${LSCOLORS}
+
+# fzfの設定
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
