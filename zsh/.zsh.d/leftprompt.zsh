@@ -25,7 +25,7 @@ function left-prompt-top() {
 
 
 function left-prompt-middle() {
-  echo "%K{white}$(shell-view)%k%F{white}%K{red}\ue0b0%f$(ruby-version-view)%k%F{red}%K{blue}\ue0b0%f$(gcc-version-view) %k%F{blue}\ue0b0%f"
+  echo "$(shell-view)%F{white}%K{red}\ue0b0%f$(ruby-version-view)%k%F{red}%K{blue}\ue0b0%f$(gcc-version-view)%k%F{blue}\ue0b0%f"
 }
 
 function left-prompt-bottom() {
@@ -37,15 +37,15 @@ function ip-view() {
 }
 
 function shell-view() {
-  echo "%F{black}$(echo $SHELL | cut -f 5 -d /)%f"
+  echo "%K{white}%F{black}$(echo $SHELL | cut -f 5 -d /)%f%k"
 }
 
 function ruby-version-view() {
-  echo "%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ')%f"
+  echo "%K{red}%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ')%f%k"
 }
 
 function gcc-version-view() {
-  echo "%F{white}  gcc $(gcc -dumpversion)%f"
+  echo "%K{blue}%F{white}  gcc $(gcc -dumpversion)%f%k"
 }
 
 # エンターキー押すたびに顔文字を変化
