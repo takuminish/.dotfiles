@@ -35,31 +35,31 @@ shellcolor="white"
 rubycolor="red"
 gcccolor="blue"
 
-function left-prompt-top() {
+left-prompt-top() {
   echo "$(ip-view)%K{${usernamecolor}}%F{${ipcolor}}\ue0b0%f$(username-view)%k%F{${usernamecolor}}%K{${currentpathcolor}}\ue0b0%f $(current-path-view)%F{${currentpathcolor}}%K{${gitbranchcolor}}\ue0b0%f$(git-branch-view)%k%F{${gitbranchcolor}}\ue0b0%f"
 }
 
-function left-prompt-middle() {
+left-prompt-middle() {
   echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}\ue0b0%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}\ue0b0%f$(gcc-version-view)%k%F{${gcccolor}}\ue0b0%f"
 }
 
-function left-prompt-bottom() {
+left-prompt-bottom() {
   echo "%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$1 % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b"
 }
 
-function ip-view() {
+ip-view() {
     echo "%K{${ipcolor}}%F{white}$(ifconfig | grep -w "inet" | grep -v "127.0.0.1" | cut -f 2 -d ' ')%f%k"
 }
 
-function username-view() {
+username-view() {
   echo "%K{${usernamecolor}}%F{black}  [%n] %f%k"
 }
 
-function current-path-view() {
+current-path-view() {
   echo "%K{${currentpathcolor}}%F{black}%d%f%k"
 }
 
-function git-branch-view {
+git-branch-view() {
     if [[ -z ${vcs_info_msg_0_} ]]; then
 	echo '%F{white} \ue0a0 [no-branch]%f'
     else
@@ -67,15 +67,15 @@ function git-branch-view {
     fi
 }
 
-function shell-view() {
+shell-view() {
   echo "%K{${shellcolor}}%F{black}$(echo $SHELL | cut -f 5 -d /)%f%k"
 }
 
-function ruby-version-view() {
+ruby-version-view() {
   echo "%K{${rubycolor}}%F{black}  Ruby $(rbenv version | cut -f 1 -d ' ')%f%k"
 }
 
-function gcc-version-view() {
+gcc-version-view() {
   echo "%K{${gcccolor}}%F{white}  gcc $(gcc -dumpversion)%f%k"
 }
 
