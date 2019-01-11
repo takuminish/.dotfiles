@@ -6,18 +6,25 @@ FACE_COLOR=("03" "207" "156" "124" "19" "07" "214" "93" "05")
 
 PROMPT='$(left-prompt-top)
 $(left-prompt-middle)
-%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b'
+$(left-prompt-bottom)'
+
 
 function left-prompt-top() {
   echo "$(ip-view)%K{green}%F{magenta}\ue0b0%f %F{black}[%n] %f%k%F{green}%K{cyan}\ue0b0%f %F{black}%d %f%k%F{cyan}%K{black}\ue0b0%f $(git-prompt)%k%F{black}\ue0b0%f"
 }
 
-function ip-view() {
-    echo "%K{magenta}%F{white}$(ifconfig | grep -w "inet" | grep -v "127.0.0.1" | cut -f 2 -d ' ')%f%k"
-}
+
 
 function left-prompt-middle() {
   echo "%K{white}$(shell-view)%k%F{white}%K{red}\ue0b0%f$(ruby-version-view)%k%F{red}%K{blue}\ue0b0%f$(gcc-version-view) %k%F{blue}\ue0b0%f"
+}
+
+function left-prompt-bottom() {
+  echo "%(?.%B%F{green}.%B%F{blue})%(?!$FACE[$RANDOM % ${#FACE[@]} + 1] !|c||^.- ^|| < ぶっぶーですわ )%f%b"
+}
+
+function ip-view() {
+    echo "%K{magenta}%F{white}$(ifconfig | grep -w "inet" | grep -v "127.0.0.1" | cut -f 2 -d ' ')%f%k"
 }
 
 function shell-view() {
