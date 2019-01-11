@@ -68,7 +68,7 @@ git-branch-view() {
 }
 
 shell-view() {
-  echo "%K{${shellcolor}}%F{black}$(echo $SHELL | cut -f 5 -d /)%f%k"
+  echo "%K{${shellcolor}}%F{black}$(echo $SHELL | rev | cut -f 1 -d "/" | rev)%f%k"
 }
 
 ruby-version-view() {
