@@ -44,7 +44,7 @@ gitbranchcolor="black"
 shellcolor="white"
 rubycolor="red"
 gcccolor="blue"
-
+python3color="yellow"
 arrow="\ue0b0"
 
 
@@ -54,7 +54,7 @@ left-prompt-top() {
 }
 
 left-prompt-middle() {
-  echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}${arrow}%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}${arrow}%f$(gcc-version-view)%k%F{${gcccolor}}${arrow}%f"
+  echo "$(shell-view)%F{${shellcolor}}%K{${rubycolor}}${arrow}%f$(ruby-version-view)%k%F{${rubycolor}}%K{${gcccolor}}${arrow}%f$(gcc-version-view)%k%F{${gcccolor}}%K{${python3color}}${arrow}%f$(python3-version-view)%k%F{${python3color}}${arrow}"
 }
 
 left-prompt-bottom() {
@@ -91,6 +91,10 @@ ruby-version-view() {
 
 gcc-version-view() {
   echo "%K{${gcccolor}}%F{white}  gcc $(gcc -dumpversion)%f%k"
+}
+
+python3-version-view() {
+  echo "%K{${python3color}}%F{black}  python3 $(python3 -V | cut -f 2 -d " ")%f%k"
 }
 
 # エンターキー押すたびに顔文字を変化
