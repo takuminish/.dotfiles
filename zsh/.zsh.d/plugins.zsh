@@ -1,4 +1,3 @@
-
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-autosuggestions", defer:2  
