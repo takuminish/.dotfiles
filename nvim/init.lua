@@ -1,3 +1,5 @@
+require('nnoremaps');
+require('options');
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -39,3 +41,6 @@ require("lazy").setup({
     -- bar
     {'romgrk/barbar.nvim', dependencies = {'nvim-web-devicons'}},
 })
+
+-- color schemeの設定
+vim.cmd([[colorscheme everforest]])

@@ -1,0 +1,10 @@
+vim.opt.fileencoding = 'utf-8'
+vim.opt.swapfile = false
+vim.opt.clipboard:append({ "unnamedplus" })
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.showmatch = true
+vim.opt.signcolumn = "yes" 
